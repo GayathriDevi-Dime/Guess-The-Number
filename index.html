@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <div>
+        <main>
+            <h1>Guess the Number</h1>
+            <p id="first">Enter a Number between 1 to 100:</p>
+    <input id="check" autocomplete="off">
+    <button onclick="check()" id="btn">Let's Check</button>
+    <p id="result">Let's Check Your Guess is Right or Wrong 🤔</p>
+    <p id="Score">Score: 15</p>
+    <button onclick="restart()" id="reset">Reset</button>
+    </main>
+    
+    </div>
+    <script>
+     //selecting input box,paragraph
+     var Guessnum=document.getElementById("check");
+     var res=document.getElementById("result");
+     var sco=document.getElementById("Score")
+    //  var RanNum=Math.floor(Math.random()*100)+1 
+     var but=document.getElementById("btn");
+     var Totalscore=15
+     var RanNum=7;
+     console.log(RanNum);
+
+     function check(){
+        var Enterednum=Guessnum.value  //consider entered number as the value entered in input box
+        if(RanNum==Enterednum){ //checking whether random number and entered number is same or not
+            console.log("You are Right!!");
+            res.textContent="Yayyy! You are Right 🏆" 
+            // alert("You WON 🏆")
+        }
+         else{
+            Totalscore=Totalscore-1;
+            sco.textContent= "Score: "+Totalscore;
+            res.textContent="Wrong 😒 One More Try! "
+            if(Totalscore==0){
+                alert("You Lost!")
+                res.textContent="Sorry !! But You Will Win 👍";
+                but.disabled=true   //we make the button disable when the score is about 0
+            }
+        
+         }
+     }
+     function restart(){  // to reset the game
+        Totalscore=15;  //to reset the value again
+        // RanNum=Math.floor(Math.random()*100)+1;
+        res.textContent="Game Restarted! One More Try !!"  //small msgs
+        sco.textContent="Score:"+Totalscore;  // set score again
+        Guessnum.value=" "  // and make the input box empty to start the game again
+        but.disabled=false;
+        RanNum=7;
+       
+     }
+    </script>
+</body>
+
+</html>
