@@ -31,19 +31,32 @@
      console.log(RanNum);
 
      function check(){
-        var Enterednum=Guessnum.value  //consider entered number as the value entered in input box
-        if(RanNum==Enterednum){ //checking whether random number and entered number is same or not
+        res.textContent=" ";
+        var Enterednum=Number(Guessnum.value)  //consider entered number as the value entered in input box
+        if(Enterednum>RanNum){
+            res.textContent="Hint: Too High 📈"
+             Totalscore=Totalscore-1;
+            sco.textContent= "Score: "+Totalscore;
+        }
+        else if(Enterednum<RanNum){
+            res.textContent="Hint: Too Low 📉"
+             Totalscore=Totalscore-1;
+            sco.textContent= "Score: "+Totalscore;
+        }
+        else if(RanNum==Enterednum){ //checking whether random number and entered number is same or not
             console.log("You are Right!!");
-            res.textContent="Yayyy! You are Right 🏆" 
-            alert("Your Guess is correct! 🏆")
+            res.textContent=" ";
+            res.textContent="🎉Correct ! You Won🏆"
             but.disabled=true
+            return;
+
         }
          else{
             Totalscore=Totalscore-1;
             sco.textContent= "Score: "+Totalscore;
             res.textContent="Wrong 😒 One More Try! "
             if(Totalscore==0){
-                alert("You Lost!")
+                // alert("You Lost!")
                 res.textContent="Sorry !! But You Will Win 👍";
                 but.disabled=true   //we make the button disable when the score is about 0
             }
